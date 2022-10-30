@@ -1,4 +1,8 @@
- System.InvalidOperationException
+Issue with System.Text.Json.Serialization; 
+
+
+
+System.InvalidOperationException
   HResult=0x80131509
   Message=Cannot create instance of type 'JsonConstructorIssue.DataCenterJsonConfig' because parameter 'dataCenter' has no matching config. Each parameter in the constructor that does not have a default value must have a corresponding config entry.
   Source=Microsoft.Extensions.Configuration.Binder
