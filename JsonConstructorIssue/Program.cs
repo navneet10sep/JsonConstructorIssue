@@ -13,6 +13,7 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
 if (configuration.GetSection("dataCenter").Exists())
 {
 
+    // Error
     var dataCenterJsonConfig = configuration.Get<DataCenterJsonConfig>();
 
     foreach (var location in dataCenterJsonConfig.DataCenter.DataCenterLocations)
