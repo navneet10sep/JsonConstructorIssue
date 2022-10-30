@@ -18,7 +18,7 @@ namespace JsonConstructorIssue
             this.Name = name;
         }
 
-        [JsonPropertyName("name")]
+        // [JsonPropertyName("name")]
         public string Name { get; }
     }
 }

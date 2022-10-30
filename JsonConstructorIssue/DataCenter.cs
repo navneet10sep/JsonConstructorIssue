@@ -17,7 +17,7 @@ namespace JsonConstructorIssue
             this.DataCenterLocations = dataCenterLocations;
         }
 
-        [JsonPropertyName("dataCenterLocations")]
-        public IReadOnlyList<DataCenterLocation> DataCenterLocations { get; }
+       [JsonPropertyName("dataCenterLocations")]
+        public List<DataCenterLocation> DataCenterLocations { get; }
     }
 }

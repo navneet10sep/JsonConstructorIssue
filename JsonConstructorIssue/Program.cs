@@ -1,29 +1,23 @@
-﻿// See https://aka.ms/new-console-template for more information
-using JsonConstructorIssue;
+﻿using JsonConstructorIssue;
 using Microsoft.Extensions.Configuration;
-
-Console.WriteLine("Hello, World!");
+using System.Text.Json;
 
 IConfigurationRoot configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
    .AddJsonFile("datacenter.json", optional: false)
   .Build();
 
+// Using Raw Json 
+/*var json = @"{ ""dataCenter"": { ""dataCenterLocations"": [ { ""name"": ""United States"" } ] } }";
+var options = new JsonSerializerOptions(JsonSerializerDefaults.Web);
+var dataCenter = JsonSerializer.Deserialize<DataCenter>(json, options);
+*/
+// Using ConfigurationBuilder
+var dataCenter = configuration.GetSection("dataCenter").Get<DataCenter>();
 
-if (configuration.GetSection("dataCenter").Exists())
+
+foreach (var location in  dataCenter.DataCenterLocations)
 {
-
-    // Error
-    var dataCenterJsonConfig = configuration.Get<DataCenterJsonConfig>();
-
-    foreach (var location in dataCenterJsonConfig.DataCenter.DataCenterLocations)
-    {
-        Console.WriteLine(location.Name);
-    }
-
-
+    Console.WriteLine(location.Name);
 }
-else
-{
-    throw new Exception("Could not read datacenter.json!");
-}
+ 
